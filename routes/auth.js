@@ -27,7 +27,6 @@ router.post('/register', async (req,res) => {
         email: req.body.email,
         password: hashedPassword
     })
-
     try{
         const savedUser = await user.save();
         res.send(savedUser)
@@ -38,6 +37,7 @@ router.post('/register', async (req,res) => {
 })
 
 router.post('/login', async (req,res)=> {
+    
     const {error} = loginValidation(req.body)
 
     if(error) return res.send(error.details[0].message);

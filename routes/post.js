@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const router = require("express").Router()
 const verifyToken = require('./verifyToken')
 
 router.get("/post", verifyToken, async (req, res) => {
@@ -9,4 +9,5 @@ router.get("/post", verifyToken, async (req, res) => {
     },
   });
 });
+
 module.exports = router;

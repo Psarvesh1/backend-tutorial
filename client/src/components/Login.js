@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -7,6 +7,7 @@ const Login = (props) => {
     email: "",
     password: "",
   });
+
   const handleLogin = () => {
     axios({
       method: "POST",
@@ -15,8 +16,9 @@ const Login = (props) => {
       headers: {"Access-Control-Allow-Origin": "*", "Content-Type": "application/json"}
     })
     .then((res) => {
-          console.log(res)
-        //   props.history.push('/login')
+        console.log(res.data)
+        localStorage.setItem('token', res.data);
+        props.history.push('/dashboard')
     })
     .catch((error) => {
       if (error.response) {
